@@ -56,7 +56,7 @@ knitr::include_graphics("figures/df_1.jpeg")
 ---
 Slides:<br> 36 slides
 
-Data set:<br> [**CLICK HERE TO DOWNLOAD**](https://github.com/ewanoleghe/Duke-farms/blob/main/Data_150.xlsx)
+Data set:<br> [**CLICK HERE TO DOWNLOAD**](https://github.com/ewanoleghe/science/Data_df.xlsx)
 
 
 ]
@@ -236,23 +236,17 @@ AoVTotal_C # Soil series and Total C
 
 ---
 ######  2.5.) Grassland - Skeet shoot field **POSTHOC TEST:** 
-.pull-left[
 ```{r echo = FALSE, message=FALSE, warning=FALSE}
 # POSTHOC TEST
-out <- HSD.test(model,"S_Series", group=TRUE,console=TRUE, # Soil S_Series
-                main="IMPACT OF SOIL SERIES ON CARBON CONTENT")
+out <- HSD.test(model,"S_Series", group=TRUE,console=TRUE)
 ```
-]
-.pull-right[
 
 ```{r echo = FALSE, message=FALSE, warning=FALSE}
 # POSTHOC TEST
-out1 <- HSD.test(model,"distance", group=TRUE,console=TRUE, # Sampling distance
-                main="IMPACT OF SAMPLING DISTANCE ON CARBON CONTENT") 
+out1 <- HSD.test(model,"distance", group=TRUE,console=TRUE ) 
 
 
 ```
-]
 ---
 ###### 2.6.) **Mean ranking - Grassland** 
 .pull-left[
@@ -328,7 +322,7 @@ class: center, middle
 ```{r mData, echo=FALSE, message=FALSE, warning=FALSE}
 ## Read data to vector mc1 read.delim
 
-mData <- read.table("C:/Users/en-y/OneDrive - Rutgers University/Statistics/R Scripts/Duke Field Data/Data.txt", fill = TRUE,  header = T, sep = "\t")
+mData <- read.table("C:/Users/en-y/Documents/GitHub/science/Data.txt", fill = TRUE,  header = T, sep = "\t")
 
 skeetSub = subset(mData, landuse== "Grassland");
 grazedSub = subset(mData, landuse== "Agriculture");
