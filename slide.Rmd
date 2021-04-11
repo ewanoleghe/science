@@ -449,7 +449,7 @@ sps <- SpatialPolygons(list(ps))
 ```
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-grid_x_y <- as.data.frame(spsample(sps, n = 50000, "regular"))
+grid_x_y <- as.data.frame(spsample(sps, n = 5000, "regular"))
 # set column names to be identical on both datasets, the one containing the original measurement data and
 # the one conatinaing the prediction locations
 colnames(grid_x_y) <- c("x", "y")
@@ -486,10 +486,10 @@ ggplot(grazedSub, aes(x.axis, y.axis)) +
 ]
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-skeetSub <- dplyr::distinct(skeetSub) 
-coordinates(skeetSub) <- ~ x.axis + y.axis
+skeetSuba <- dplyr::distinct(skeetSub) 
+coordinates(skeetSuba) <- ~ x.axis + y.axis
 
-mod1.kriged <- krige((Total_C) ~ 1, skeetSub, grid_x_y, model=mod1)
+mod1.kriged <- krige((Total_C) ~ 1, skeetSuba, grid_x_y, model=mod1)
 
 frame_mod1.kriged<-as.data.frame(mod1.kriged)
 ```
@@ -502,6 +502,7 @@ mod2.kriged <- krige((Total_C) ~ 1, grazedSub30, grid_x_y, model=mod2)
 
 frame_mod2.kriged<-as.data.frame(mod2.kriged)
 ```
+
 ---
 
 ###### 3.5.) Kriging & Predict carbon content for each field
@@ -638,6 +639,8 @@ mPlotGrz
 
 
 ---
+###### Map: Grassland
+
 <!-- # EXTRACT POINTS EITH ELEVATION DATA -->
 ```{r echo = FALSE}
 skeetE <- skeetSub[-c(66:150 ), ]
@@ -694,7 +697,6 @@ library(gdtools)
 mapS = mapview(locations_Sk)
 mapG = mapview(locations_Gz)
 ```
-###### Map: Grassland
 
 ```{r echo = FALSE, fig.width=14, fig.height=7.5}
 mapS
