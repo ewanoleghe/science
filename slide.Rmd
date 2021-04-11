@@ -313,11 +313,12 @@ mData <- read.table("C:/Users/en-y/Documents/GitHub/science/Data.txt", fill = TR
 
 skeetSub = subset(mData, landuse== "Grassland");
 grazedSub = subset(mData, landuse== "Agriculture");
+grazedSub30 = subset(grazedSub, Sam_Dist== "30");
 
 library(gstat)
 
 var1 <- variogram(Total_C ~ 1, ~x.axis + y.axis, cutoff = 480, width = 55, data = skeetSub)
-var2 <- variogram(Total_C ~ 1, ~x.axis + y.axis, cutoff = 480, width = 55, data = grazedSub)
+var2 <- variogram(Total_C ~ 1, ~x.axis + y.axis, cutoff = 480, width = 55, data = grazedSub30)
 
 ```
 ###### 3.1a.) R codes to calculation number of pairs for undirected (isotropic) empirical semivariogram
@@ -349,7 +350,7 @@ plot(var1, plot.numbers = TRUE, xlab = "Distance", ylab = "Semivariance", cex = 
 ##### Agriculture
 
 ```{r echo = FALSE, message=FALSE, warning=FALSE}
-plot(var2, plot.numbers = TRUE, xlab = "Distance", ylab = "Semivariance", cex = 1, cex.axis = 2, xlim=c(0, 550), ylim=c(0.0, 1.0))
+plot(var2, plot.numbers = TRUE, xlab = "Distance", ylab = "Semivariance", cex = 1, cex.axis = 2, xlim=c(0, 550), ylim=c(0.0, 0.6))
 ```
 ]
 ###### **Figure 1:** Undirected semivariogram of Total_C for Grassland and Agriculture fields. 
