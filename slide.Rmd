@@ -54,7 +54,7 @@ knitr::include_graphics("figures/df_1.jpeg")
 <br>
 <br>
 ---
-Slides:<br> 36 slides
+Slides:<br> 31 slides
 
 Data set:<br> [**CLICK HERE TO DOWNLOAD**](https://github.com/ewanoleghe/science/Data_df.xlsx)
 
@@ -236,49 +236,36 @@ AoVTotal_C # Soil series and Total C
 
 ---
 ######  2.5.) Grassland - Skeet shoot field **POSTHOC TEST:** 
-```{r echo = FALSE, message=FALSE, warning=FALSE}
-# POSTHOC TEST
-out <- HSD.test(model,"S_Series", group=TRUE,console=TRUE)
-```
-
-```{r echo = FALSE, message=FALSE, warning=FALSE}
-# POSTHOC TEST
-out1 <- HSD.test(model,"distance", group=TRUE,console=TRUE ) 
-
-
-```
----
-###### 2.6.) **Mean ranking - Grassland** 
 .pull-left[
-###### a.) Soil series
+```{r echo = FALSE, message=FALSE, warning=FALSE}
+# POSTHOC TEST
+out <- HSD.test(model,"S_Series", group=TRUE,console=TRUE, # Soil S_Series
+                main="IMPACT OF SOIL SERIES ON CARBON CONTENT")
+```
+]
+.pull-right[
+###### b.) Soil series:  **Mean ranking - Grassland** 
 
 ```{r echo = FALSE}
 plot(out)
 ```
 ]
 
-.pull-right[
-
-###### b.) Sampling distance
-```{r echo = FALSE}
-plot(out1)
-```
-]
 ---
 
 ```{r echo=FALSE}
-mcP <- read.table("C:/Users/en-y/OneDrive - Rutgers University/Statistics/R Scripts/Duke Field Data/Data.txt", fill = TRUE,  header = T, sep = "\t")
+mcP <- read.table("C:/Users/en-y/Documents/GitHub/science/DataSP.txt", fill = TRUE,  header = T, sep = "\t")
 
-skeetmcP = subset(mcP, landuse== "Grassland");
-grazedmcP = subset(mcP, landuse== "Agriculture");
+skeetmcP2 = subset(mcP, landuse== "Grassland");
+grazedmcP2 = subset(mcP, landuse== "Agriculture");
 
-x <- skeetmcP$x.axis
-y <- skeetmcP$y.axis
-Total_C <- skeetmcP$Total_C
+x <- skeetmcP2$x.axis
+y <- skeetmcP2$y.axis
+Total_C <- skeetmcP2$Total_C
 
-x1 <- grazedmcP$x.axis
-y1 <- grazedmcP$y.axis
-Total_C1 <- grazedmcP$Total_C
+x1 <- grazedmcP2$x.axis
+y1 <- grazedmcP2$y.axis
+Total_C1 <- grazedmcP2$Total_C
 
 ```
 
@@ -295,7 +282,7 @@ coordinates(dataS) = ~x+y
 coordinates(dataG) = ~x1+y1
 
 ```
-###### 2.7.)  Spatial plot of soil organic carbon concentration
+###### 2.6.)  Spatial plot of soil organic carbon concentration
 
 .pull-left[
 ##### Grassland
