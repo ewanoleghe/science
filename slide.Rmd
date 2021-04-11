@@ -54,7 +54,7 @@ knitr::include_graphics("figures/df_1.jpeg")
 <br>
 <br>
 ---
-Slides:<br> 30 slides
+Slides:<br> 36 slides
 
 Data set:<br> [**CLICK HERE TO DOWNLOAD**](https://github.com/ewanoleghe/Duke-farms/blob/main/Data_150.xlsx)
 
