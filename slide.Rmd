@@ -56,7 +56,7 @@ knitr::include_graphics("figures/df_1.jpeg")
 ---
 Slides:<br> 31 slides
 
-Data set:<br> [**CLICK HERE TO DOWNLOAD**](https://github.com/ewanoleghe/science/Data.txt)
+Data set:<br> [**CLICK HERE TO DOWNLOAD**](https://ewanoleghe.github.io/science/Data.txt)
 
 
 ]
