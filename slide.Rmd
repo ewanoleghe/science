@@ -26,7 +26,7 @@ output:
 .row[
 .col-7[
 .title[
-###Duke Farms Carbon Project.
+###Duke Farms Soil Organic Carbon Study.
 ]
  
 
@@ -402,7 +402,7 @@ attr(mod2, "SSErr")
 ###### Grassland
 ```{r echo=FALSE}
 plot(var1, plot.numbers = TRUE, model = mod1, xlab = "Distance", ylab = "Semivariance", xlim=c(0, 550), ylim=c(0.0, 0.25), pch = 19,
-     bg = "lightgray", col = "red",  lwd = 0.9, cex = 1.5)
+     bg = "lightgray", col = "black",  lwd = 0.9, cex = 1.5)
 
 ```
 
@@ -424,7 +424,6 @@ plot(var2, plot.numbers = TRUE, model = mod2, xlab = "Distance", ylab = "Semivar
 ```{r echo=FALSE}
 library(sp)
 library(ggplot2)
-
 
 ```
 <!-- --- # Create Kriging map for experimental area -->
@@ -485,11 +484,20 @@ ggplot(grazedSub, aes(x.axis, y.axis)) +
 ```
 ]
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-skeetSuba <- dplyr::distinct(skeetSub) 
-coordinates(skeetSuba) <- ~ x.axis + y.axis
+```{r}
+rData <- read.table("C:/Users/en-y/Documents/GitHub/science/Data.txt", fill = TRUE,  header = T, sep = "\t")
 
-mod1.kriged <- krige((Total_C) ~ 1, skeetSuba, grid_x_y, model=mod1)
+skeetR = subset(rData, landuse== "Grassland");
+grazedR = subset(rData, landuse== "Agriculture");
+grazedR30 = subset(grazedR, Sam_Dist== "30");
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+skeetR <- dplyr::distinct(skeetR) 
+
+coordinates(skeetR) <- ~ x.axis + y.axis
+
+mod1.kriged <- krige((Total_C) ~ 1, skeetR, grid_x_y, model=mod1)
 
 frame_mod1.kriged<-as.data.frame(mod1.kriged)
 ```
