@@ -56,7 +56,7 @@ knitr::include_graphics("figures/df_1.jpeg")
 ---
 Slides:<br> 31 slides
 
-Data set:<br> [**CLICK HERE TO DOWNLOAD**](https://github.com/ewanoleghe/science/Data_df.xlsx)
+Data set:<br> [**CLICK HERE TO DOWNLOAD**](https://github.com/ewanoleghe/science/Data.txt)
 
 
 ]
@@ -484,7 +484,7 @@ ggplot(grazedSub, aes(x.axis, y.axis)) +
 ```
 ]
 
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 rData <- read.table("C:/Users/en-y/Documents/GitHub/science/Data.txt", fill = TRUE,  header = T, sep = "\t")
 
 skeetR = subset(rData, landuse== "Grassland");
@@ -727,7 +727,7 @@ mapG
 ###### Estimate the vertical distribution of organic carbo to bedrock or maximum penetration depth
 
 --
-###### Estimate the number of samples baased on the semivariogram to estimate a field
+###### Estimate the number of samples required to characterize a field/landuse based on the semivariogram.
 
 --
 ###### Estimate the impact of landuse and soil types on aggregate stability
